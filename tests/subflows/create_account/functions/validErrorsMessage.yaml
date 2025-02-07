@@ -1,0 +1,11 @@
+appId: openfoodfacts.github.scrachx.openfood
+---
+
+- tapOn: "Sign Up"
+- assertVisible: "Please enter the display name you want to use"
+- assertVisible: "E-mail is required"
+- assertVisible: "Please enter a username"
+- assertVisible: "Please enter a password"
+- assertVisible: "Please confirm the password"
+- assertVisible: "When creating an account, agreeing to the Terms of Use is mandatory,\
+    \ however, anonymous contributions can still be made through the app"

@@ -1,0 +1,78 @@
+appId: openfoodfacts.github.scrachx.openfood
+tags:
+  - android
+  - passing
+---
+- launchApp
+
+- runScript: createAccount.js
+- runFlow: functions/accessCreateAccountPage.yaml
+- runFlow: functions/validErrorsMessage.yaml
+
+##### Input random name and check that the error message isn't visible
+- tapOn: "Name"
+- inputRandomPersonName
+- assertNotVisible: "Please enter the display name you want to use"
+
+##### Input invalid e-mail and check that the error message isn't visible, and the e-mail invalid message is visible
+- tapOn: "E-mail"
+- inputText: emailinvalido
+- assertNotVisible: "E-mail is required"
+- assertVisible: "Invalid e-mail"
+
+- eraseText
+
+##### Input invalid e-mail and check that the e-mail invalid and error message isn't visible
+- inputRandomEmail
+- assertNotVisible: "Invalid e-mail"
+- assertNotVisible: "E-mail is required"
+- tapOn: "Username: Publicly visible"
+- inputText: Us Er Inv@lid 123
+- assertNotVisible: "Please enter a username"
+- assertVisible: "Username cannot contains spaces, caps or special characters."
+- eraseText
+- inputText: "arthur"
+- assertNotVisible: "Username cannot contains spaces, caps or special characters."
+- tapOn: "Password"
+- inputText: "123"
+- assertVisible: "Please enter a valid password (at least 6 characters)"
+- assertNotVisible: "Please enter a password"
+- inputText: "456"
+- assertNotVisible: "Please enter a valid password (at least 6 characters)"
+- assertNotVisible: "Please enter a password"
+- tapOn: "Confirm Password"
+- inputText: "123"
+- assertVisible: "Passwords don't match"
+- inputText: "456"
+- assertNotVisible: "Passwords don't match"
+- hideKeyboard
+- tapOn: "I agree to the Open Food Facts "
+## Open Password eye
+- tapOn:
+    point: "89%,35%"
+- assertVisible: "123456"
+## Close Password eye
+- tapOn:
+    point: "89%,35%"
+- assertVisible:
+    text: "••••••"
+    index: 0
+## Open Confirm Password eye
+- tapOn:
+    point: "89%,43%"
+- assertVisible: "123456"
+## Close Confirm Password eye
+- tapOn:
+    point: "89%,43%"
+- assertVisible:
+    text: "••••••"
+    index: 1
+- tapOn: "Sign Up"
+- assertVisible: "The user name already exists, please choose another username."
+- tapOn: "Close"
+- tapOn: "arthur"
+- eraseText
+- runFlow: 
+    file: functions/validateCreatedUsername.yaml
+    env:
+      username: ${output.createAccount.data.userName}

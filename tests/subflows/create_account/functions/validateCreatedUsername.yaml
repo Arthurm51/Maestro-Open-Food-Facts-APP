@@ -1,0 +1,11 @@
+appId: openfoodfacts.github.scrachx.openfood
+# env:
+#     username:  # Inicialmente null
+---
+
+- inputText: ${username}
+- hideKeyboard
+- tapOn: "Sign Up"
+- assertVisible: "Congratulations! Your account has just been created."
+- tapOn: "Okay"
+- assertVisible: "Welcome ${username}!"

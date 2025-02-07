@@ -1,0 +1,8 @@
+appId: openfoodfacts.github.scrachx.openfood
+---
+
+- tapOn: "Profile"
+- assertVisible: "Welcome!"
+- tapOn: "Sign in"
+- tapOn: "Sign in to your Open Food Facts account to save your contributions"
+- tapOn: "Create account"
