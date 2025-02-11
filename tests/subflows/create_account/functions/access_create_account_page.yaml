@@ -1,6 +1,8 @@
 appId: openfoodfacts.github.scrachx.openfood
 ---
 
+##### access create account page
+
 - tapOn: "Profile"
 - assertVisible: "Welcome!"
 - tapOn: "Sign in"

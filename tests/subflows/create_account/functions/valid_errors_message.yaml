@@ -1,6 +1,8 @@
 appId: openfoodfacts.github.scrachx.openfood
 ---
 
+##### validate errors messages
+
 - tapOn: "Sign Up"
 - assertVisible: "Please enter the display name you want to use"
 - assertVisible: "E-mail is required"

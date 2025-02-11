@@ -1,7 +1,8 @@
 appId: openfoodfacts.github.scrachx.openfood
-# env:
-#     username:  # Inicialmente null
+
 ---
+
+##### input text with env
 
 - inputText: ${username}
 - hideKeyboard

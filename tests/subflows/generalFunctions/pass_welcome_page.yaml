@@ -1,0 +1,40 @@
+appId: openfoodfacts.github.scrachx.openfood
+---
+
+
+- assertVisible: "Welcome !"
+- tapOn: "Continue"
+- assertVisible: "Open Food Facts is a global non-profit powered by local communities."
+- tapOn: "Please choose a country:\n🇺🇸\nUnited States\nSome environmental features\
+    \ are location-specific"
+##### select Brazil
+- assertVisible: "Select your country:"
+- tapOn: "Search"
+- inputText: "Braz"
+- "hideKeyboard"
+- tapOn: "Brazil"
+- assertVisible: "Please choose a country:\n🇧🇷\nBrazil\nSome environmental features\
+    \ are location-specific"
+- tapOn: "Next"
+- assertVisible: "Choose foods that are good for you."
+- tapOn: "Nutri-Score A"
+- assertVisible: "Details for Nutri-Score A with A good product for you\nNutri-Score\
+    \ A\nA good product for you, Open Food Facts"
+- tapOn: "Back"
+- "scroll"
+- assertVisible: "Food processing"
+- assertVisible: "Ingredients analysis"
+- assertVisible: "Ingredients"
+
+##### use a pointer here because the android navigation bar is above the button
+- tapOn:
+    point: "80%,93%"
+- assertVisible: "Choose foods that are good for the planet."
+- "scroll"
+- assertVisible: "Transportation"
+- tapOn:
+    point: "80%,93%"
+- assertVisible: "See the food data relevant to your preferences."
+- "scroll"
+- assertVisible: "Food Preferences"
+- tapOn: "Next"

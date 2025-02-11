@@ -1,17 +1,17 @@
-function gerarUsername() {
-    var caracteres = 'abcdefghijklmnopqrstuvwxyz0123456789';
+function generateUserName() {
+    var chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     var username = '';
-    var tamanho = 10; // Tamanho do nome de usuário
+    var size = 10;
 
-    for (var i = 0; i < tamanho; i++) {
-        var randomIndex = Math.floor(Math.random() * caracteres.length);
-        username += caracteres[randomIndex];
+    for (var i = 0; i < size; i++) {
+        var randomIndex = Math.floor(Math.random() * chars.length);
+        username += chars[randomIndex];
     }
     return username;
 }
 
 output.createAccount = {
     data: {
-        userName: gerarUsername(), // Gera o nome de usuário aleatório
+        userName: generateUserName(), // Gera o nome de usuário aleatório
     }
 };

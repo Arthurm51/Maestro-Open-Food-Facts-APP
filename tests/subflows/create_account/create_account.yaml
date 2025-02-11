@@ -3,13 +3,33 @@ tags:
   - android
   - passing
 ---
+##### clean appData
+- clearState
 - launchApp
 
 - runScript: createAccount.js
-- runFlow: functions/accessCreateAccountPage.yaml
-- runFlow: functions/validErrorsMessage.yaml
 
-##### Input random name and check that the error message isn't visible
+##### if the first screen is the app welcome screen, run flow
+- runFlow:
+    when:
+      visible: "The app that helps you choose food that is good for\ 
+
+        you
+
+        \ and the\ 
+
+        planet
+
+        !"
+    file: ../generalFunctions/pass_welcome_page.yaml
+
+##### acess create account page
+- runFlow: functions/access_create_account_page.yaml
+
+##### validate errors messages
+- runFlow: functions/valid_errors_message.yaml
+
+##### Input a valid random name and check that the error message isn't visible
 - tapOn: "Name"
 - inputRandomPersonName
 - assertNotVisible: "Please enter the display name you want to use"
@@ -22,57 +42,83 @@ tags:
 
 - eraseText
 
-##### Input invalid e-mail and check that the e-mail invalid and error message isn't visible
+##### Input valid e-mail and check that the e-mail invalid and error message isn't visible
 - inputRandomEmail
 - assertNotVisible: "Invalid e-mail"
 - assertNotVisible: "E-mail is required"
+
+##### Input invalid username and check that the error message is visible
 - tapOn: "Username: Publicly visible"
 - inputText: Us Er Inv@lid 123
 - assertNotVisible: "Please enter a username"
 - assertVisible: "Username cannot contains spaces, caps or special characters."
+
 - eraseText
+
+##### Input a valid username and check that the error message isn't visible
 - inputText: "arthur"
 - assertNotVisible: "Username cannot contains spaces, caps or special characters."
+
+##### Input invalid password and check that the error message is visible
 - tapOn: "Password"
 - inputText: "123"
 - assertVisible: "Please enter a valid password (at least 6 characters)"
 - assertNotVisible: "Please enter a password"
+
+##### Input a valid password and check that the error message isn't visible
 - inputText: "456"
 - assertNotVisible: "Please enter a valid password (at least 6 characters)"
 - assertNotVisible: "Please enter a password"
+
+##### Input a diferent password and check that the error message is visible
 - tapOn: "Confirm Password"
 - inputText: "123"
 - assertVisible: "Passwords don't match"
+
+##### Input the same password and check that the error message isn't visible
 - inputText: "456"
 - assertNotVisible: "Passwords don't match"
+
 - hideKeyboard
+
+##### accept terms
 - tapOn: "I agree to the Open Food Facts "
+
 ## Open Password eye
 - tapOn:
     point: "89%,35%"
 - assertVisible: "123456"
+
 ## Close Password eye
 - tapOn:
     point: "89%,35%"
 - assertVisible:
     text: "••••••"
     index: 0
+
 ## Open Confirm Password eye
 - tapOn:
     point: "89%,43%"
 - assertVisible: "123456"
+
 ## Close Confirm Password eye
 - tapOn:
     point: "89%,43%"
 - assertVisible:
     text: "••••••"
     index: 1
+
+##### trying sign up with username already exists and check that the modal with error message is visible
 - tapOn: "Sign Up"
 - assertVisible: "The user name already exists, please choose another username."
+
+##### close modal
 - tapOn: "Close"
 - tapOn: "arthur"
 - eraseText
+
+##### create account with a validate username and check the welcome message 
 - runFlow: 
-    file: functions/validateCreatedUsername.yaml
+    file: functions/validate_created_username.yaml
     env:
       username: ${output.createAccount.data.userName}
