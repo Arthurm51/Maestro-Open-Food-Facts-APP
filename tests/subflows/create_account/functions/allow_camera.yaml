@@ -1,0 +1,6 @@
+appId: openfoodfacts.github.scrachx.openfood
+---
+
+- tapOn: "Authorise"
+- tapOn:
+    id: "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
