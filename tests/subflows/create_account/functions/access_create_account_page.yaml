@@ -1,9 +1,16 @@
 appId: openfoodfacts.github.scrachx.openfood
 ---
 
+
+
+
 ##### access create account page
 
 - tapOn: "Profile"
+- runFlow:
+    when:
+      notVisible: "Sign in"
+    file: logout.yaml
 - assertVisible: "Welcome!"
 - tapOn: "Sign in"
 - tapOn: "Sign in to your Open Food Facts account to save your contributions"
