@@ -10,7 +10,7 @@ appId: openfoodfacts.github.scrachx.openfood
 - runFlow:
     when:
       notVisible: "Sign in"
-    file: logout.yaml
+    file: ../../generalFunctions/logout.yaml
 - assertVisible: "Welcome!"
 - tapOn: "Sign in"
 - tapOn: "Sign in to your Open Food Facts account to save your contributions"

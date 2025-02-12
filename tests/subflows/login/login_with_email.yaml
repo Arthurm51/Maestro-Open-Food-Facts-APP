@@ -1,0 +1,18 @@
+appId: openfoodfacts.github.scrachx.openfood
+tags:
+  - android
+  - passing
+---
+##### clean appData
+# - clearState
+- launchApp
+
+- runScript: login.js
+
+- runFlow: 
+    file: functions/login.yaml
+    env:
+      Login: ${output.login.data.email}
+      Password: ${output.login.data.password}
+      UserName: ${output.login.data.userName}
+      Credentials: "Valid"

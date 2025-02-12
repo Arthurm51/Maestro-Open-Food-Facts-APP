@@ -1,0 +1,60 @@
+appId: openfoodfacts.github.scrachx.openfood
+
+---
+##### clean appData
+# - clearState
+- launchApp
+
+##### if the first screen is the app welcome screen, run flow
+- runFlow:
+    when:
+      visible: "The app that helps you choose food that is good for\ 
+
+        you
+
+        \ and the\ 
+
+        planet
+
+        !"
+    file: ../../generalFunctions/pass_welcome_page.yaml
+    
+
+- tapOn: "Profile"
+- runFlow:
+    when:
+      notVisible: "Sign in"
+    file: ../../generalFunctions/logout.yaml
+- tapOn: "Sign in"
+- tapOn: "Username or e-mail"
+- inputText: ${Login}
+- tapOn: "Password"
+- inputText: ${Password}
+- "hideKeyboard"
+- tapOn: "Sign in"
+
+- runFlow:
+    when:
+      visible: "Are you enjoying this app?"
+    commands: 
+      - tapOn: Close
+    
+
+- runFlow:
+    when:
+      true: ${Credentials == 'Valid'}
+    commands: 
+      - assertVisible: "Welcome ${UserName}!"
+      - tapOn: "Welcome ${UserName}!"
+      - assertVisible: "Products I added"
+      - assertVisible: "View profile"
+
+- runFlow:
+    when:
+      true: ${Credentials == 'Invalid'}
+    commands: 
+      - assertNotVisible: "Welcome ${UserName}!"
+      - assertVisible: "Incorrect username or password."
+
+
+

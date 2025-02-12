@@ -1,6 +1,7 @@
 appId: openfoodfacts.github.scrachx.openfood
 ---
 
+- tapOn: "Profile"
 - tapOn:
     point: "50%,38%"
 - "scroll"
