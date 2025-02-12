@@ -38,3 +38,9 @@ appId: openfoodfacts.github.scrachx.openfood
 - "scroll"
 - assertVisible: "Food Preferences"
 - tapOn: "Next"
+
+
+- runFlow:
+    when:
+      visible: "Camera access"
+    file: allow_camera.yaml

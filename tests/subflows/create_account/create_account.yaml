@@ -23,10 +23,7 @@ tags:
         !"
     file: ../generalFunctions/pass_welcome_page.yaml
 
-- runFlow:
-    when:
-      visible: "Camera access"
-    file: functions/allow_camera.yaml
+
 
 ##### acess create account page
 - runFlow: functions/access_create_account_page.yaml
